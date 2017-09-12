@@ -1,0 +1,7 @@
+# IDEA platform stuff
+.idea/
+*.iws
+
+# Python
+*.pyc
+venv/
