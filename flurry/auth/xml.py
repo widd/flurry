@@ -25,7 +25,7 @@ class XMLProtocol(LineReceiver):
 		elif self.state == LOGIN and "<msg t='sys'><body action='login' r='0'>" in line:
 			username = strbet(line, '<nick><![CDATA[', ']]')
 			password = strbet(line, '<pword><![CDATA[', ']]')
-			if username or not password:
+			if not username or not password:
 				self.finished.errback(Exception('Missing username or password in CDATA!'))
 				return
 
