@@ -37,7 +37,8 @@ class ExampleAuthSource(AuthSource):
 		self.transport.loseConnection()
 
 	def connectionMade(self):
-		self.xmlHandler.makeConnection(self.transport)
+		if not self.xmlAuthed:
+			self.xmlHandler.makeConnection(self.transport)
 
 	def lineReceived(self, line):
 		super(self.__class__, self).lineReceived(line)
